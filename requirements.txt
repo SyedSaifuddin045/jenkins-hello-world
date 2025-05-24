@@ -1,0 +1,5 @@
+# Python dependencies for the Jenkins demo project
+pytest>=7.0.0
+flake8>=5.0.0
+black>=22.0.0
+requests>=2.28.0
