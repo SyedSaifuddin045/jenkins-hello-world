@@ -172,36 +172,6 @@ pipeline {
             }
         }
         
-        stage('Setup Python Environment') {
-            when {
-                expression {
-                    return readFile(env.PYTHON_FOUND_FILE).trim() == 'true'
-                }
-            }
-            steps {
-                echo '🔧 Setting up Python environment...'
-                sh '''
-                    # Ensure pip is available and up to date
-                    python3 -m ensurepip --upgrade 2>/dev/null || echo "ensurepip not available"
-                    
-                    # Install/upgrade pip if needed
-                    if command -v pip3 >/dev/null 2>&1; then
-                        pip3 install --upgrade pip
-                    else
-                        python3 -m pip install --upgrade pip
-                    fi
-                    
-                    # Install requirements if requirements.txt exists
-                    if [ -f "requirements.txt" ]; then
-                        echo "Installing requirements from requirements.txt..."
-                        python3 -m pip install -r requirements.txt
-                    else
-                        echo "No requirements.txt found, skipping dependency installation"
-                    fi
-                '''
-            }
-        }
-        
         stage('Run Application') {
             when {
                 expression {
