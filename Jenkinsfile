@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'your-agent-label' } // Replace with your agent label
+    agent { label 'ec2-agent' } // Replace with your agent label
     environment {
         PYTHON_FOUND_FILE = '.python_found'
         PYTHON_INSTALLED_FILE = '.python_installed'
